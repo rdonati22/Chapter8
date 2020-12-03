@@ -21,7 +21,17 @@ public class Factorial {
     }
 
     public static double calcEX(int x){
-        return Math.pow(calcE(),x);
+        double e = 1.0;
+        double olde = 0.0;
+        int m = 1;
+        int n = 1;
+        while(e-olde>.001){
+            olde = e;
+            e+=Math.pow(x,n)/calcFactorial(m);
+            m++;
+            n++;
+        }
+        return e;
     }
 
     public static void main (String [] args){
@@ -34,7 +44,7 @@ public class Factorial {
         }
         System.out.println(calcE());
         for (int a = 1; a<6; a++){
-            System.out.printf("e is %2.3f \n", calcEX(a));
+            System.out.printf("e ^ " + a + " is %2.3f \n", calcEX(a));
         }
     }
 }
